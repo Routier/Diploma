@@ -100,6 +100,7 @@ public class FormPage {
         continueButton.shouldBe(Condition.visible).click();
         return new NotificationPage();
     }
+
     public FormPage waitForMessage() {
         notificationMessage.shouldBe(Condition.visible, Duration.ofSeconds(15));
         return this;

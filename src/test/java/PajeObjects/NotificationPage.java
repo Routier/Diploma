@@ -12,6 +12,7 @@ public class NotificationPage {
     public SelenideElement getSuccessNotification() {
         return successNotification.shouldBe(Condition.visible);
     }
+
     public SelenideElement getErrorNotification() {
         return errorNotification.shouldBe(Condition.visible);
     }
