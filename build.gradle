@@ -1,0 +1,44 @@
+plugins {
+    id 'java'
+    id 'io.qameta.allure' version '2.11.2'
+    id "io.freefair.lombok" version "8.6"
+}
+
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 11
+compileJava.options.encoding = "UTF-8"
+compileTestJava.options.encoding = "UTF-8"
+
+allure {
+    version = '2.20.1'
+    useJUnit5 {
+        version = '2.20.1'
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.0'
+    testImplementation 'mysql:mysql-connector-java:8.0.30'
+    testImplementation 'org.postgresql:postgresql:42.3.5'
+    testImplementation 'com.github.javafaker:javafaker:1.0.2'
+    testRuntimeOnly 'org.slf4j:slf4j-simple:1.7.32'
+    testImplementation 'commons-dbutils:commons-dbutils:1.7'
+    testImplementation 'com.codeborne:selenide:6.17.2'
+    testImplementation 'io.qameta.allure:allure-java-commons:2.20.1'
+    testImplementation 'io.qameta.allure:allure-selenide:2.16.1'
+    implementation 'org.seleniumhq.selenium:selenium-java:4.11.0'
+
+}
+
+
+test {
+    useJUnitPlatform()
+    systemProperty 'selenide.headless', System.getProperty('selenide.headless')
+    systemProperty 'chromeoptions.prefs', System
+            .getProperty('chromeoptions.prefs', "profile.password_manager_leak_detection=false")
+}
